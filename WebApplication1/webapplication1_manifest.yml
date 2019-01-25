@@ -1,7 +1,7 @@
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: webapp1
+  name: webapp
   labels:
     app: hello
 spec:
@@ -22,7 +22,7 @@ spec:
             cpu: 100m
             memory: 100Mi
         ports:
-        - containerPort: 8080
+        - containerPort: 80
           name: dotnetapp-port
 ---
 apiVersion: v1
