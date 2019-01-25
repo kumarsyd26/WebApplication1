@@ -1,15 +1,6 @@
-FROM microsoft/aspnetcore-build
-
+FROM microsoft/aspnetcore:1.1
+ARG source
 WORKDIR /app
- 
-COPY . /app
- 
-# Run the following commands in Linux Terminal to restore .NET Core packages
-RUN ["dotnet", "restore"]
- 
-# Build the application
-RUN ["dotnet", "build"]
- 
-WORKDIR /app
- 
-ENTRYPOINT ["dotnet", "WEbApplication1.dll"]
+EXPOSE 80
+COPY ${source:-obj/Docker/publish} .
+ENTRYPOINT ["dotnet", "WebApplication1.dll"]
